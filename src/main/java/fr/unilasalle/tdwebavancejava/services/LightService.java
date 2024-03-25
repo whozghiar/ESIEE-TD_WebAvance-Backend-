@@ -14,10 +14,21 @@ public class LightService {
 
     private final LightRepository lightRepository;
 
+    /**
+     * Récupérer toutes les lampes
+     * @return
+     */
     public List<Light> getAllLights() {
         return this.lightRepository.findAll();
     }
 
+    /**
+     * Créer ou mettre à jour une lampe
+     * @param light
+     * @return
+     * @throws NotFoundException
+     * @throws DBException
+     */
     public Light updateLight(Light light) throws NotFoundException,DBException {
 
         Light existingLight = null;
@@ -41,6 +52,25 @@ public class LightService {
             return lightUpdated;
         } catch (DBException e) {
             throw new DBException("Error while updating light");
+        }
+    }
+
+    /**
+     * Supprimer une lampe
+     * @param id
+     * @throws NotFoundException
+     * @throws DBException
+     */
+
+    public void deleteLight(Long id) throws NotFoundException, DBException {
+        Light existingLight = this.lightRepository.findById(id).orElse(null);
+        if (existingLight == null) {
+            throw new NotFoundException("Could not find light with id " + id);
+        }
+        try {
+            this.lightRepository.delete(existingLight);
+        } catch (DBException e) {
+            throw new DBException("Error while deleting light with id " + id);
         }
     }
 }

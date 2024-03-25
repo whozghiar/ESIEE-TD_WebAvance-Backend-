@@ -41,4 +41,20 @@ public class LightController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteLight(@PathVariable Long id) {
+        try {
+            log.info("Deleting light with id " + id);
+            this.lightService.deleteLight(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (NotFoundException e) {
+            log.error("Could not find light with id " + id, e);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (DBException e) {
+            log.error("Error while deleting light with id " + id, e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
