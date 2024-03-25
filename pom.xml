@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>fr.unilasalle</groupId>
-    <artifactId>TD-WebAvanceJava</artifactId>
+    <artifactId>Partie Java</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>TD-WebAvanceJava</name>
     <description>TD-WebAvanceJava</description>
