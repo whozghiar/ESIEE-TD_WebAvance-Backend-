@@ -7,6 +7,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class DBException extends RuntimeException{
+public class NotFoundException extends Throwable {
     private String message;
 }

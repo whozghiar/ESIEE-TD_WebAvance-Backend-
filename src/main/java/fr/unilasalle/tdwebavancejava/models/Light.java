@@ -18,8 +18,8 @@ public class Light {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private boolean toggle;
+    private Long id;
+    private Boolean toggle;
     private String color;
     private String title;
 
